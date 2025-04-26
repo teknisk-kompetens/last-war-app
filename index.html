@@ -1,0 +1,351 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last War Event Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1>Last War Event Planner</h1>
+                <p>Optimize your gameplay and maximize rewards</p>
+            </div>
+        </header>
+      
+        <div class="assistant-container">
+            <div class="assistant-avatar" id="assistant-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="assistant-bubble">
+                <p id="assistant-message">Hej! I'm your Last War strategic assistant. Would you like me to help you plan your event participation for maximum rewards?</p>
+                <div class="assistant-actions">
+                    <button class="assistant-btn" id="assistant-yes">Yes, please help!</button>
+                    <button class="assistant-btn secondary" id="assistant-no">Not right now</button>
+                </div>
+            </div>
+        </div>
+      
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="tab-btn" data-tab="arms-race">Arms Race</button>
+            <button class="tab-btn" data-tab="vs-event">VS Event</button>
+            <button class="tab-btn" data-tab="calendar">Calendar</button>
+            <button class="tab-btn" data-tab="alliance">Alliance Tools</button>
+        </div>
+      
+        <div id="dashboard" class="tab-content active">
+            <h2>Your Strategic Dashboard</h2>
+            <p>Welcome to your Last War Event Planner! Here's a summary of your upcoming events and tasks.</p>
+          
+            <div class="collapsible">
+                <span>Today's Critical Tasks</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="task-container" id="critical-tasks">
+                    <!-- Tasks will be dynamically populated here -->
+                </div>
+            </div>
+          
+            <div class="collapsible">
+                <span>Event Timeline & Progress</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="progress-container">
+                    <div class="progress-bar" id="overall-progress" style="width: 45%;"></div>
+                </div>
+                <p style="text-align: center; margin-top: 10px;">You've completed 45% of optimal event participation</p>
+              
+                <div class="planner-section">
+                    <div class="planner-column">
+                        <h3>Arms Race Progress</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 60%;"></div>
+                        </div>
+                        <p style="text-align: center; margin-top: 10px;">60% Complete</p>
+                    </div>
+                    <div class="planner-column">
+                        <h3>VS Event Progress</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width: 30%;"></div>
+                        </div>
+                        <p style="text-align: center; margin-top: 10px;">30% Complete</p>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="collapsible">
+                <span>Interactive Strategy Builder</span>
+            </div>
+            <div class="collapsible-content">
+                <p>Drag and drop activities to create your optimal gameplay strategy:</p>
+                <div class="flowchart-container" id="strategy-flowchart">
+                    <!-- Flowchart nodes will be added dynamically -->
+                </div>
+            </div>
+        </div>
+      
+        <div id="arms-race" class="tab-content">
+            <h2>Arms Race Event Planner</h2>
+            <p>Plan your activities for each day of the Arms Race event to maximize your point gains.</p>
+          
+            <div class="collapsible">
+                <span>Event Schedule & Themes</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="planner-section">
+                    <div class="planner-column">
+                        <h3>Purchase Theme</h3>
+                        <div class="task-container">
+                            <div class="task-card" draggable="true" data-points="500" data-time="15m">
+                                <div class="task-header">
+                                    <div class="task-title">
+                                        <div class="task-icon"><i class="fas fa-shopping-cart"></i></div>
+                                        Buy Diamonds Pack
+                                    </div>
+                                    <div class="task-points">500 pts</div>
+                                </div>
+                                <div class="task-description">Purchase diamonds pack from the store to earn points during the Purchase theme.</div>
+                                <div class="task-time"><i class="far fa-clock"></i> Estimated time: 15 min</div>
+                                <div class="task-actions">
+                                    <button class="task-btn" onclick="addToSchedule(this.parentNode.parentNode)">Add to Schedule</button>
+                                </div>
+                            </div>
+                          
+                            <div class="task-card" draggable="true" data-points="300" data-time="10m">
+                                <div class="task-header">
+                                    <div class="task-title">
+                                        <div class="task-icon"><i class="fas fa-coins"></i></div>
+                                        Resource Packs
+                                    </div>
+                                    <div class="task-points">300 pts</div>
+                                </div>
+                                <div class="task-description">Purchase resource packs from the store.</div>
+                                <div class="task-time"><i class="far fa-clock"></i> Estimated time: 10 min</div>
+                                <div class="task-actions">
+                                    <button class="task-btn" onclick="addToSchedule(this.parentNode.parentNode)">Add to Schedule</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="planner-column">
+                        <h3>Recruit Theme</h3>
+                        <div class="task-container">
+                            <div class="task-card" draggable="true" data-points="400" data-time="20m">
+                                <div class="task-header">
+                                    <div class="task-title">
+                                        <div class="task-icon"><i class="fas fa-user-plus"></i></div>
+                                        Elite Recruitment
+                                    </div>
+                                    <div class="task-points">400 pts</div>
+                                </div>
+                                <div class="task-description">Perform elite recruitment to gain heroes and points.</div>
+                                <div class="task-time"><i class="far fa-clock"></i> Estimated time: 20 min</div>
+                                <div class="task-actions">
+                                    <button class="task-btn" onclick="addToSchedule(this.parentNode.parentNode)">Add to Schedule</button>
+                                </div>
+                            </div>
+                          
+                            <div class="task-card" draggable="true" data-points="250" data-time="15m">
+                                <div class="task-header">
+                                    <div class="task-title">
+                                        <div class="task-icon"><i class="fas fa-users"></i></div>
+                                        Troop Training
+                                    </div>
+                                    <div class="task-points">250 pts</div>
+                                </div>
+                                <div class="task-description">Train troops to strengthen your army and earn points.</div>
+                                <div class="task-time"><i class="far fa-clock"></i> Estimated time: 15 min</div>
+                                <div class="task-actions">
+                                    <button class="task-btn" onclick="addToSchedule(this.parentNode.parentNode)">Add to Schedule</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="planner-section" style="margin-top: 20px;">
+                    <!-- More theme sections would go here... -->
+                </div>
+            </div>
+          
+            <div class="collapsible">
+                <span>Your Arms Race Strategy</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="planner-section">
+                    <div class="planner-column">
+                        <h3>Your Schedule</h3>
+                        <div class="dropzone" id="schedule-dropzone">
+                            <i class="fas fa-calendar-plus"></i>
+                            <p>Drag tasks here to add to your schedule</p>
+                        </div>
+                    </div>
+                  
+                    <div class="planner-column">
+                        <h3>Points Projection</h3>
+                        <div id="points-projection">
+                            <p>Total projected points: <span id="total-points">0</span></p>
+                            <div class="progress-container">
+                                <div class="progress-bar" id="points-progress" style="width: 0%;"></div>
+                            </div>
+                            <p style="margin-top: 10px;">Reward tier progress: <span id="reward-tier">Bronze</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div id="vs-event" class="tab-content">
+            <h2>VS Event Planner</h2>
+            <p>Optimize your strategy for the VS Event to maximize rewards and alliance contribution.</p>
+          
+            <div class="collapsible">
+                <span>VS Event Schedule</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="planner-section">
+                    <div class="planner-column">
+                        <h3>Day 1-2: Preparation</h3>
+                        <div class="task-container">
+                            <div class="task-card" draggable="true">
+                                <div class="task-header">
+                                    <div class="task-title">
+                                        <div class="task-icon"><i class="fas fa-shield-alt"></i></div>
+                                        Train Troops
+                                    </div>
+                                </div>
+                                <div class="task-description">Focus on training troops to prepare for the VS Event battles.</div>
+                                <div class="task-time"><i class="far fa-clock"></i> Complete before Day 3</div>
+                                <div class="task-actions">
+                                    <button class="task-btn" onclick="addToVsSchedule(this.parentNode.parentNode)">Add to Schedule</button>
+                                </div>
+                            </div>
+                          
+                            <!-- More task cards would go here... -->
+                        </div>
+                    </div>
+                  
+                    <!-- More sections would go here... -->
+                </div>
+            </div>
+        </div>
+      
+        <div id="calendar" class="tab-content">
+            <h2>Event Calendar</h2>
+            <p>Plan your Last War activities with our integrated calendar. Set reminders and never miss an important event again.</p>
+          
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="calendar-month">April 2025</h3>
+                    <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+              
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- Calendar days will be dynamically generated -->
+                </div>
+            </div>
+          
+            <div style="margin-top: 20px;">
+                <h3>Upcoming Events</h3>
+                <div id="upcoming-events">
+                    <div class="task-card">
+                        <div class="task-header">
+                            <div class="task-title">
+                                <div class="task-icon" style="background-color: var(--accent);"><i class="fas fa-calendar-day"></i></div>
+                                Arms Race: Purchase Theme
+                            </div>
+                        </div>
+                        <div class="task-description">The Purchase theme starts tomorrow at 04:00 local time.</div>
+                        <div class="task-time"><i class="far fa-clock"></i> Apr 27, 2025 - 04:00</div>
+                        <div class="task-actions">
+                            <button class="task-btn" onclick="addToCalendar(this)">Add to Calendar</button>
+                            <button class="task-btn" onclick="setReminder(this)">Set Reminder</button>
+                        </div>
+                    </div>
+                  
+                    <!-- More event cards would go here... -->
+                </div>
+            </div>
+        </div>
+      
+        <div id="alliance" class="tab-content">
+            <h2>Alliance Tools</h2>
+            <p>Special tools for R4 and R5 alliance members to create announcements, coordinate strategies, and manage alliance activities.</p>
+          
+            <div class="collapsible">
+                <span>Announcement Generator</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="message-generator">
+                    <h3>Create Alliance Announcement</h3>
+                    <p>Generate professional announcements for your alliance members.</p>
+                  
+                    <select id="announcement-type" style="width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        <option value="event">Event Announcement</option>
+                        <option value="strategy">Strategy Coordination</option>
+                        <option value="requirements">Participation Requirements</option>
+                        <option value="rewards">Rewards Distribution</option>
+                    </select>
+                  
+                    <textarea class="message-template" id="announcement-details" placeholder="Enter additional details here..."></textarea>
+                  
+                    <div class="alliance-actions">
+                        <button class="alliance-btn" onclick="generateAnnouncement()">Generate Announcement</button>
+                    </div>
+                  
+                    <div id="generated-announcement" style="margin-top: 20px; display: none;">
+                        <h4>Generated Announcement</h4>
+                        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; border-left: 4px solid var(--secondary);">
+                            <div id="announcement-text"></div>
+                        </div>
+                        <button class="alliance-btn" style="margin-top: 10px;" onclick="copyAnnouncement()">Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+          
+            <!-- More alliance tools sections would go here... -->
+        </div>
+      
+        <!-- Modal for setting up reminders -->
+        <div class="modal" id="reminder-modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal('reminder-modal')">&times;</span>
+                <h3>Set Reminder</h3>
+                <p style="margin-top: 10px;">When would you like to be reminded?</p>
+              
+                <div style="margin-top: 15px;">
+                    <label>Reminder Time:</label>
+                    <select id="reminder-time" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px;">
+                        <option value="5">5 minutes before</option>
+                        <option value="15">15 minutes before</option>
+                        <option value="30">30 minutes before</option>
+                        <option value="60">1 hour before</option>
+                        <option value="120">2 hours before</option>
+                        <option value="1440">1 day before</option>
+                    </select>
+                  
+                    <label style="display: block; margin-top: 15px;">Notification Type:</label>
+                    <select id="notification-type" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px;">
+                        <option value="app">App Notification</option>
+                        <option value="calendar">Add to Calendar</option>
+                        <option value="both">Both</option>
+                    </select>
+                  
+                    <button class="alliance-btn" style="width: 100%; margin-top: 20px;" onclick="saveReminder()">Save Reminder</button>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Toast notification container -->
+        <div class="toast-container" id="toast-container">
+            <!-- Toast notifications will be added here -->
+        </div>
+    </div>
+</body>
+</html>

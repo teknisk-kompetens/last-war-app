@@ -1,0 +1,21 @@
+{
+  "name": "Last War Ultimate App",
+  "short_name": "Last War App",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#3498db",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
